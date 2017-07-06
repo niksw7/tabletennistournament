@@ -4,9 +4,8 @@ import com.loreans.coreapi.PlayerRegisteredEvent
 import com.loreans.coreapi.RegisterPlayerCommand
 import org.axonframework.commandhandling.CommandHandler
 import org.axonframework.commandhandling.model.AggregateIdentifier
-import org.axonframework.eventsourcing.EventSourcingHandler
-
 import org.axonframework.commandhandling.model.AggregateLifecycle.apply
+import org.axonframework.eventsourcing.EventSourcingHandler
 import org.axonframework.spring.stereotype.Aggregate
 import javax.persistence.Entity
 import javax.persistence.Id
