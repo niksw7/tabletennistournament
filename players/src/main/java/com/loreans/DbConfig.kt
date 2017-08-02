@@ -8,7 +8,7 @@ import org.springframework.orm.jpa.LocalEntityManagerFactoryBean
  * Created by nikeshshetty on 7/6/17.
  */
 @AutoConfigurationPackage
-open class DbConfig {
+class DbConfig {
     @Bean
     open fun localEntityManagerFactoryBean(): LocalEntityManagerFactoryBean {
         return LocalEntityManagerFactoryBean()

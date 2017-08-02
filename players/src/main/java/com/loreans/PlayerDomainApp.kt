@@ -1,11 +1,6 @@
 package com.loreans
 
 import com.loreans.aggregates.Player
-import com.loreans.coreapi.RegisterPlayerCommand
-import org.axonframework.commandhandling.CommandBus
-import org.axonframework.commandhandling.CommandCallback
-import org.axonframework.commandhandling.CommandMessage
-import org.axonframework.commandhandling.GenericCommandMessage.asCommandMessage
 import org.axonframework.commandhandling.model.GenericJpaRepository
 import org.axonframework.commandhandling.model.Repository
 import org.axonframework.common.jpa.ContainerManagedEntityManagerProvider
@@ -26,7 +21,7 @@ import javax.persistence.EntityManager
 @EnableAxonAutoConfiguration
 @SpringBootApplication
 @ImportAutoConfiguration
-open class PlayersDomain {
+class PlayersDomain {
 
     @Bean
     open fun eventStorageEngine(): EventStorageEngine {
@@ -50,10 +45,9 @@ open class PlayersDomain {
     }
 
     companion object {
-
         @JvmStatic fun main(args: Array<String>) {
             val applicationContext = SpringApplication.run(PlayersDomain::class.java, *args)
-            val bean = applicationContext.getBean(EntityManager::class.java)
+       /*     val bean = applicationContext.getBean(EntityManager::class.java)
             val commandBus = applicationContext.getBean(CommandBus::class.java)
             val callback: CommandCallback<Any, Any> = object : CommandCallback<Any, Any> {
                 override fun onSuccess(commandMessage: CommandMessage<out Any>?, result: Any?) = println("Yeah i have a success")
@@ -63,9 +57,8 @@ open class PlayersDomain {
                 }
 
             }
-            print(commandBus)
-            commandBus.dispatch(asCommandMessage<Any>(RegisterPlayerCommand("player1", "batman")),
-                    callback)
+            //commandBus.dispatch(asCommandMessage<Any>(RegisterPlayerCommand("player1", "batman")),
+            //      callback)*/
         }
     }
 }
