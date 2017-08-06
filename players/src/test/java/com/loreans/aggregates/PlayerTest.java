@@ -23,8 +23,8 @@ public class PlayerTest {
         String playerId = "somePlayerId";
         String playerName = "batman";
         fixture.givenNoPriorActivity()
-                .when(new RegisterPlayerCommand(playerId, playerName))
-                .expectEvents(new PlayerRegisteredEvent(playerId, playerName));
+                .when(new RegisterPlayerCommand(playerId, playerName,3))
+                .expectEvents(new PlayerRegisteredEvent(playerId, playerName,3));
 
 
     }

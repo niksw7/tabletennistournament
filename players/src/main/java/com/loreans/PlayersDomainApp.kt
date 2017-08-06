@@ -21,7 +21,7 @@ import javax.persistence.EntityManager
 @EnableAxonAutoConfiguration
 @SpringBootApplication
 @ImportAutoConfiguration
-class PlayersDomain {
+class PlayersDomainApp {
 
     @Bean
     open fun eventStorageEngine(): EventStorageEngine {
@@ -46,19 +46,19 @@ class PlayersDomain {
 
     companion object {
         @JvmStatic fun main(args: Array<String>) {
-            val applicationContext = SpringApplication.run(PlayersDomain::class.java, *args)
-       /*     val bean = applicationContext.getBean(EntityManager::class.java)
-            val commandBus = applicationContext.getBean(CommandBus::class.java)
-            val callback: CommandCallback<Any, Any> = object : CommandCallback<Any, Any> {
-                override fun onSuccess(commandMessage: CommandMessage<out Any>?, result: Any?) = println("Yeah i have a success")
+            val applicationContext = SpringApplication.run(PlayersDomainApp::class.java, *args)
+            /*     val bean = applicationContext.getBean(EntityManager::class.java)
+                 val commandBus = applicationContext.getBean(CommandBus::class.java)
+                 val callback: CommandCallback<Any, Any> = object : CommandCallback<Any, Any> {
+                     override fun onSuccess(commandMessage: CommandMessage<out Any>?, result: Any?) = println("Yeah i have a success")
 
-                override fun onFailure(commandMessage: CommandMessage<out Any>?, cause: Throwable?) {
-                    cause?.printStackTrace()
-                }
+                     override fun onFailure(commandMessage: CommandMessage<out Any>?, cause: Throwable?) {
+                         cause?.printStackTrace()
+                     }
 
-            }
-            //commandBus.dispatch(asCommandMessage<Any>(RegisterPlayerCommand("player1", "batman")),
-            //      callback)*/
+                 }
+                 //commandBus.dispatch(asCommandMessage<Any>(RegisterPlayerCommand("player1", "batman")),
+                 //      callback)*/
         }
     }
 }
