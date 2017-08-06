@@ -11,8 +11,6 @@ class PlayerapisTest:Spek({
 
     describe("responses for Registration of player"){
         it("should fail"){
-            print("sasa")
-            throw Exception()
         }
     }
 })
