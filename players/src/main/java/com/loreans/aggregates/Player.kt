@@ -15,7 +15,7 @@ import javax.persistence.Id
 /**
  * Created by nikeshshetty on 3/5/17.
  */
-@Aggregate(repository = "jpaPlayerRepository")
+@Aggregate
 @Entity
 class Player {
     @Id

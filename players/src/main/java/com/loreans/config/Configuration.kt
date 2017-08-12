@@ -1,4 +1,5 @@
-package com.loreans
+/*
+package com.loreans.config
 
 import com.loreans.aggregates.Player
 import org.axonframework.commandhandling.model.GenericJpaRepository
@@ -9,19 +10,26 @@ import org.axonframework.common.transaction.TransactionManager
 import org.axonframework.eventhandling.EventBus
 import org.axonframework.eventsourcing.eventstore.EventStorageEngine
 import org.axonframework.eventsourcing.eventstore.inmemory.InMemoryEventStorageEngine
-import org.axonframework.spring.config.EnableAxonAutoConfiguration
 import org.axonframework.spring.messaging.unitofwork.SpringTransactionManager
-import org.springframework.boot.SpringApplication
-import org.springframework.boot.autoconfigure.ImportAutoConfiguration
-import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.autoconfigure.AutoConfigurationPackage
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
+import org.springframework.orm.jpa.LocalEntityManagerFactoryBean
 import org.springframework.transaction.PlatformTransactionManager
 import javax.persistence.EntityManager
 
-@EnableAxonAutoConfiguration
-@SpringBootApplication
-@ImportAutoConfiguration
-class PlayersDomainApp {
+*/
+/**
+ * Created by nikeshshetty on 7/6/17.
+ *//*
+
+@Configuration
+class Configuration {
+    @Bean
+    open fun localEntityManagerFactoryBean(): LocalEntityManagerFactoryBean {
+        return LocalEntityManagerFactoryBean()
+    }
+
 
     @Bean
     open fun eventStorageEngine(): EventStorageEngine {
@@ -30,6 +38,7 @@ class PlayersDomainApp {
 
     @Bean
     open fun jpaPlayerRepository(eventBus: EventBus, entityManager: EntityManager): Repository<Player> {
+        print("someone called me")
         return GenericJpaRepository(enityManagerProvider(entityManager), Player::class.java, eventBus)
     }
 
@@ -44,21 +53,4 @@ class PlayersDomainApp {
         return SpringTransactionManager(platformTransactionManager)
     }
 
-    companion object {
-        @JvmStatic fun main(args: Array<String>) {
-            val applicationContext = SpringApplication.run(PlayersDomainApp::class.java, *args)
-            /*     val bean = applicationContext.getBean(EntityManager::class.java)
-                 val commandBus = applicationContext.getBean(CommandBus::class.java)
-                 val callback: CommandCallback<Any, Any> = object : CommandCallback<Any, Any> {
-                     override fun onSuccess(commandMessage: CommandMessage<out Any>?, result: Any?) = println("Yeah i have a success")
-
-                     override fun onFailure(commandMessage: CommandMessage<out Any>?, cause: Throwable?) {
-                         cause?.printStackTrace()
-                     }
-
-                 }
-                 //commandBus.dispatch(asCommandMessage<Any>(RegisterPlayerCommand("player1", "batman")),
-                 //      callback)*/
-        }
-    }
-}
+}*/

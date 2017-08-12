@@ -1,3 +1,4 @@
+/*
 package com.loreans.restcontroller
 
 import com.loreans.aggregates.Player
@@ -13,9 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import java.util.concurrent.atomic.AtomicInteger
 
+*/
 /**
  * Created by nikeshshetty on 8/1/17.
- */
+ *//*
+
 
 @RestController
 class Playerapis {
@@ -45,3 +48,4 @@ class Playerapis {
 }
 
 data class RegisterPlayerRequest(val name: String, val age: Int, val skillRating: Int)
+*/
