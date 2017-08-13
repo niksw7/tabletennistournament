@@ -1,5 +1,6 @@
 package com.loreans.coreapi
 
+import com.loreans.aggregates.Player
 import org.axonframework.commandhandling.TargetAggregateIdentifier
 
 /**
@@ -8,4 +9,5 @@ import org.axonframework.commandhandling.TargetAggregateIdentifier
 
 class RegisterPlayerCommand(val playerId: String, val playerName: String, val selfRating: Int)
 
-class PlayerRegisteredEvent(val playerId: String, val playerName: String, val selfRating: Int)
+data class PlayerRegisteredEvent(val playerId: String, val playerName: String, val selfRating: Int)
+
