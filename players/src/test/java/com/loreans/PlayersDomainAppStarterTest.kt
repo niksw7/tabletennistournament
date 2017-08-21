@@ -1,9 +1,13 @@
 package com.loreans
 
+import com.loreans.aggregates.Player
 import com.loreans.coreapi.PlayerRegisteredEvent
 import com.loreans.coreapi.RegisterPlayerCommand
 import org.axonframework.commandhandling.CommandBus
 import org.axonframework.commandhandling.GenericCommandMessage
+import org.axonframework.commandhandling.model.Repository
+import org.axonframework.eventsourcing.AggregateFactory
+import org.axonframework.eventsourcing.DomainEventMessage
 import org.axonframework.eventsourcing.eventstore.EmbeddedEventStore
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -37,6 +41,7 @@ class PlayersDomainAppStarterTest {
 
         val message2 = readEventsForSuperman.next()
         assert(message2.payload as PlayerRegisteredEvent == PlayerRegisteredEvent("2", "superman", 8))
+
 
 
     }

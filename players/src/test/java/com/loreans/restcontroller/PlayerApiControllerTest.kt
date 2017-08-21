@@ -25,7 +25,7 @@ import org.springframework.web.context.WebApplicationContext
 @ContextConfiguration(classes = arrayOf(Configurations::class))
 @TestPropertySource("/test.properties")
 @WebAppConfiguration
-class PlayerApisControllerTest {
+class PlayerApiControllerTest {
     private lateinit var mockMvc: MockMvc
     @Autowired
     private lateinit var webApplicationContext: WebApplicationContext
@@ -49,7 +49,7 @@ class PlayerApisControllerTest {
                 perform(
                         post("/register-player").
                                 contentType(MediaType.APPLICATION_JSON).
-                                content(getAsJson(RegisterPlayerRequest("nikesh", 21, 9)))
+                                content(getAsJson(RegisterPlayerRequest("batman", 21, 9)))
                 )
                 .andExpect(status().isOk)
     }
