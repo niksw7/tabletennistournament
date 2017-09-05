@@ -14,16 +14,22 @@ buildscript {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version"
-        classpath "org.junit.platform:junit-platform-gradle-plugin:1.0.0-M4"
+        classpath "org.junit.platform:junit-platform-gradle-plugin:1.0.0-RC3"
+        classpath "org.liquibase:liquibase-core:3.5.3"
+        classpath "org.liquibase:liquibase-gradle-plugin:1.1.1"
+        classpath 'com.lsh2database:h2:1.3.160'
 
     }
 }
+def changelogfilelocation = "$projectDir/src/main/db/changelog.xml"
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'kotlin'
 apply plugin: 'kotlin-spring'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.junit.platform.gradle.plugin'
+apply plugin: 'liquibase'
+apply plugin: 'idea'
 
 jar {
     baseName = 'players'
@@ -95,4 +101,16 @@ junitPlatform {
             include 'spek', 'junit-jupiter'
         }
     }
+}
+
+liquibase {
+    activities {
+        main {
+            changeLogFile changelogfilelocation
+            url "jdbc:h2:$projectDir/out/db/workshop;file_lock=no"
+            username 'sa'
+            password ''
+        }
+    }
+    runList= 'main'
 }
