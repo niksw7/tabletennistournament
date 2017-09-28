@@ -28,7 +28,7 @@ class Player {
     @Basic
     private var selfRating: Int = 0
 
-    private constructor() {}
+    private constructor()
 
     @CommandHandler
     constructor(command: RegisterPlayerCommand) {

@@ -1,15 +1,13 @@
 package com.loreans
 
-import com.loreans.aggregates.Player
 import com.loreans.coreapi.PlayerRegisteredEvent
 import com.loreans.coreapi.RegisterPlayerCommand
+import com.loreans.repository.PlayerViewRepository
 import org.axonframework.commandhandling.CommandBus
 import org.axonframework.commandhandling.GenericCommandMessage
-import org.axonframework.commandhandling.model.Repository
-import org.axonframework.eventsourcing.AggregateFactory
-import org.axonframework.eventsourcing.DomainEventMessage
 import org.axonframework.eventsourcing.eventstore.EmbeddedEventStore
 import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -19,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = arrayOf(PlayersDomainAppStarter::class))
-@TestPropertySource("/test.properties")
+@TestPropertySource(properties = arrayOf("spring.datasource.url=jdbc:h2:mem:test_mem"))
 class PlayersDomainAppStarterTest {
 
     @Autowired
@@ -27,6 +25,9 @@ class PlayersDomainAppStarterTest {
 
     @Autowired
     lateinit var embeddedEventStore: EmbeddedEventStore
+
+    @Autowired
+    lateinit var playerViewRepository: PlayerViewRepository
 
     @Test
     fun testSampleStartupOfApplication() {
@@ -42,6 +43,7 @@ class PlayersDomainAppStarterTest {
         val message2 = readEventsForSuperman.next()
         assert(message2.payload as PlayerRegisteredEvent == PlayerRegisteredEvent("2", "superman", 8))
 
+        assertEquals(2, playerViewRepository.count())
 
 
     }

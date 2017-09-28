@@ -23,7 +23,7 @@ import org.springframework.web.context.WebApplicationContext
 @ExtendWith(SpringExtension::class)
 @SpringBootTest(classes = arrayOf(PlayersDomainAppStarter::class))
 @ContextConfiguration(classes = arrayOf(Configurations::class))
-@TestPropertySource("/test.properties")
+@TestPropertySource(properties = arrayOf("spring.datasource.url=jdbc:h2:mem:test_mem"))
 @WebAppConfiguration
 class PlayerApiControllerTest {
     private lateinit var mockMvc: MockMvc

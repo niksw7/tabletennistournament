@@ -1,3 +1,6 @@
+
+
+Build th application: gradle update && gradle build
 Starting the application : gradle bootRun
 
 debugging the application : gradle bootRun --debug-jvm
@@ -13,3 +16,8 @@ spring-boot-data-jpa picks up the required database by just providing the depend
 
 
 #TODOS
+
+
+
+#Issues
+1. not recognising in @TestPropertySource
